@@ -1,4 +1,8 @@
+using PasswordValidator.API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 
 // Add services to the container.
 builder.Services.AddControllers();

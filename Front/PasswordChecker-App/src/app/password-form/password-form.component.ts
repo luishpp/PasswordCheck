@@ -14,7 +14,7 @@ export class PasswordFormComponent {
   constructor(private http: HttpClient) {}
 
   checkPassword() {
-    this.http.get<boolean>(`http://localhost:5062/api/password/${this.password}`)
+    this.http.get<boolean>(`http://localhost:5062/api/v1/password/${this.password}`)
       .subscribe(result => {
         this.isValid = result
       }

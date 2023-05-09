@@ -4,7 +4,7 @@ using PasswordValidator.API.Services;
 namespace PasswordValidatorAPI.Controllers; //Validators.Password
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class PasswordController : ControllerBase //PasswordValidator
 {
     private readonly IPasswordService _service;

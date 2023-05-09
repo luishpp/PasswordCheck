@@ -10,7 +10,7 @@ public class PasswordTests //ValidityTest
     [InlineData("ab", false)]
     [InlineData("AAAbbbCc", false)]
     [InlineData("AbTp9!foo", false)]
-    //[InlineData("AbTp9!foA", false)]
+    [InlineData("AbTp9!foA", false)]
     [InlineData("AbTp9 fok", false)]
     [InlineData("AbTp9!fok", true)]
     public void IsValid_Returns_Expected_Result(string password, bool expected) //ValidPassword

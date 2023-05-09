@@ -6,7 +6,7 @@ public class PasswordService : IPasswordService
 {
     public bool CheckIfIsValid(string password)
     {
-        string pattern = @"^(?!.*(.)\1+)[a-zA-Z\d!@#$%^&*()\-\+]{8,}$";
+        string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-+])(?!.*\s)(?!.*(.).*\1).+$";
         bool isValid = Regex.IsMatch(password, pattern);
         
         return isValid;
