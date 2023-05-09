@@ -8,8 +8,8 @@ public class PasswordService
 
     public bool CheckIfIsValid(string password)
     {
-        Regex regex = new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()-+*])[A-Za-z\\d!@#$%^&*()-+*]{9,}$");
-        bool isValid = regex.IsMatch(password);
+        string pattern = @"^(?!.*(.)\1+)[a-zA-Z\d!@#$%^&*()\-\+]{8,}$";
+        bool isValid = Regex.IsMatch(password, pattern);
         
         return isValid;
     }        
