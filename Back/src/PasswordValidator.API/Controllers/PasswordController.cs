@@ -7,9 +7,9 @@ namespace PasswordValidatorAPI.Controllers; //Validators.Password
 [Route("api/[controller]")]
 public class PasswordController : ControllerBase //PasswordValidator
 {
-    private readonly PasswordService _service;
+    private readonly IPasswordService _service;
     
-    public PasswordController(PasswordService service)
+    public PasswordController(IPasswordService service)
     {
             _service = service;
     }
