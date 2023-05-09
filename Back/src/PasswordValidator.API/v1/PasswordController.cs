@@ -15,8 +15,8 @@ public class PasswordController : ControllerBase //PasswordValidator
     }
 
     [HttpGet("{password}")]
-    public bool IsValid(string password)
+    public async Task<bool> IsValid(string password)
     {      
-        return _service.CheckIfIsValid(password);
+        return await _service.CheckIfIsValid(password);
     }
 }
