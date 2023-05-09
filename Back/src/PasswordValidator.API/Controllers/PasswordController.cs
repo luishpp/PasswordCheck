@@ -7,11 +7,16 @@ namespace PasswordValidatorAPI.Controllers; //Validators.Password
 [Route("api/[controller]")]
 public class PasswordController : ControllerBase //PasswordValidator
 {
+    private readonly PasswordService _service;
+    
+    public PasswordController(PasswordService service)
+    {
+            _service = service;
+    }
+
     [HttpGet("{password}")]
     public bool IsValid(string password)
-    {
-        var service = new PasswordService();
-       
-        return service.CheckIfIsValid(password);
+    {      
+        return _service.CheckIfIsValid(password);
     }
 }
