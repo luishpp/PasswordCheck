@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ./src
+      run: dotnet restore ./Back/src/PasswordValidator.sln
     - name: Build
-      run: dotnet build ./src --no-restore
+      run: dotnet build ./Back/src/PasswordValidator.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./Back/src/PasswordValidator.Tests/PasswordValidator.Tests.csproj --no-build --verbosity normal
