@@ -1,10 +1,11 @@
-using PasswordValidator.API.Configuration;
-using PasswordValidator.API.Services;
+using PasswordValidator.Application.Contracts;
+using PasswordValidator.Application.Services;
+using PasswordValidator.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IPasswordService, PasswordService>();
-builder.Services.Configure<RegexPatternConfiguration>(builder.Configuration.GetSection("RegexConfiguration"));
+builder.Services.Configure<RegexConfig>(builder.Configuration.GetSection("RegexConfiguration"));
 
 // Add services to the container.
 builder.Services.AddControllers();

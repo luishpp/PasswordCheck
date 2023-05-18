@@ -1,4 +1,4 @@
-namespace PasswordValidator.API.Services;
+namespace PasswordValidator.Application.Contracts;
 
 public interface IPasswordService
 {

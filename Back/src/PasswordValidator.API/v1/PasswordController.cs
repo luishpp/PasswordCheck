@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using PasswordValidator.API.Services;
+using PasswordValidator.Application.Contracts;
 
-namespace PasswordValidatorAPI.Controllers; //Validators.Password
+namespace PasswordValidator.API.Controllers; 
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class PasswordController : ControllerBase //PasswordValidator
+public class PasswordController : ControllerBase 
 {
     private readonly IPasswordService _service;
     
@@ -16,7 +16,18 @@ public class PasswordController : ControllerBase //PasswordValidator
 
     [HttpGet("{password}")]
     public async Task<bool> IsValid(string password)
-    {      
-        return await _service.CheckIfIsValid(password);
+    {   
+        bool isValid = false;
+
+        try
+        {
+            isValid = await _service.CheckIfIsValid(password);
+        }
+        catch (System.Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }  
+
+        return isValid;
     }
 }

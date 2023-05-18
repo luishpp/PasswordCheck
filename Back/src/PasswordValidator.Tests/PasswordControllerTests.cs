@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PasswordValidator.API.Services;
+using PasswordValidator.Application.Contracts;
 using PasswordValidator.Tests;
 
 namespace PasswordValidatorTests;
@@ -27,7 +27,6 @@ public class PasswordControllerTests : IClassFixture<BaseTest>
     {
         // Arrange
         var service = _host.Services.GetService<IPasswordService>();
-        //var appConfig = _host.Services.GetService<RegexPatternConfiguration>();             
 
         // Act
         var result = service != null ? await service.CheckIfIsValid(password) : false;

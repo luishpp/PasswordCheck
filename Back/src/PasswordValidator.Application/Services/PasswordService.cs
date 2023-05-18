@@ -1,14 +1,15 @@
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Options;
-using PasswordValidator.API.Configuration;
+using PasswordValidator.Application.Contracts;
+using PasswordValidator.Infrastructure.Configuration;
 
-namespace PasswordValidator.API.Services;
+namespace PasswordValidator.Application.Services;
 
 public class PasswordService : IPasswordService
 {
-    private readonly RegexPatternConfiguration _configuration;
+    private readonly RegexConfig _configuration;
 
-    public PasswordService(IOptions<RegexPatternConfiguration> options)
+    public PasswordService(IOptions<RegexConfig> options)
     {
         _configuration = options.Value;        
     }

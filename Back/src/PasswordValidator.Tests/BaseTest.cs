@@ -2,8 +2,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PasswordValidator.API.Configuration;
-using PasswordValidator.API.Services;
+using PasswordValidator.Application.Contracts;
+using PasswordValidator.Application.Services;
+using PasswordValidator.Infrastructure.Configuration;
 
 namespace PasswordValidator.Tests;
 
@@ -17,7 +18,7 @@ public class BaseTest
 
     public IHost TestHost { get; }
 
-    public static IHostBuilder CreateHostBuilder(string[]? args = null) =>
+    public static IHostBuilder CreateHostBuilder(string[] args = null) =>
         Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
@@ -32,7 +33,7 @@ public class BaseTest
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddOptions();
-                services.Configure<RegexPatternConfiguration>(hostContext.Configuration.GetSection("RegexConfiguration"));
+                services.Configure<RegexConfig>(hostContext.Configuration.GetSection("RegexConfiguration"));
                 services.AddScoped<IPasswordService, PasswordService>();             
             })
             .ConfigureLogging((hostingContext, logging) =>
