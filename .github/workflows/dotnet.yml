@@ -4,10 +4,14 @@
 name: .NET
 
 on:
+  workflow_dispatch: # Allow running the workflow manually from the GitHub UI
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # Run the workflow when pushing to the main branch
   pull_request:
-    branches: [ "main" ]
+    branches: ["*"] # Run the workflow for all pull requests
+  release:
+    types:
+      ["published"] # Run the workflow when a new GitHub release is published    
 
 jobs:
   build:
@@ -16,10 +20,12 @@ jobs:
       name: dsv
     steps:
     - uses: actions/checkout@v3
+    
+    # Install the .NET SDK indicated in the global.json file
     - name: Setup .NET 
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: ${{ matrix.dotnet-version }}
     - name: Restore dependencies
       run: dotnet restore ./Back/src/PasswordValidator.sln
     - name: Build
