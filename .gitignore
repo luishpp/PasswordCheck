@@ -490,3 +490,6 @@ testem.log
 Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
+
+# Backup files
+*.bkp
