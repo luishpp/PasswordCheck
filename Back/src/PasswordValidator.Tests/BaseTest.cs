@@ -2,9 +2,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PasswordValidator.Application.Contracts;
-using PasswordValidator.Application.Services;
 using PasswordValidator.Infrastructure.Configuration;
+using PasswordValidator.Infrastructure.Factories;
 
 namespace PasswordValidator.Tests;
 
@@ -33,8 +32,9 @@ public class BaseTest
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddOptions();
-                services.Configure<RegexConfig>(hostContext.Configuration.GetSection("RegexConfiguration"));
-                services.AddScoped<IPasswordService, PasswordService>();             
+                services.Configure<RegexRule>(hostContext.Configuration.GetSection("RegexRule"));
+                services.Configure<RetryRules>(hostContext.Configuration.GetSection("RetryRules"));
+                services.AddScoped<IPasswordServiceFactory, PasswordServiceFactory>();                    
             })
             .ConfigureLogging((hostingContext, logging) =>
             {

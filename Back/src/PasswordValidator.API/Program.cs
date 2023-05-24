@@ -1,11 +1,10 @@
-using PasswordValidator.Application.Contracts;
-using PasswordValidator.Application.Services;
 using PasswordValidator.Infrastructure.Configuration;
+using PasswordValidator.Infrastructure.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddScoped<IPasswordService, PasswordService>();
-builder.Services.Configure<RegexConfig>(builder.Configuration.GetSection("RegexConfiguration"));
+builder.Services.Configure<RegexRule>(builder.Configuration.GetSection("RegexRule"));
+builder.Services.Configure<RetryRules>(builder.Configuration.GetSection("RetryRules"));
+builder.Services.AddSingleton<IPasswordServiceFactory, PasswordServiceFactory>();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -14,6 +13,10 @@ builder.Services.AddCors();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Setup Microsoft Extensions Logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();   
 
 var app = builder.Build();
 
@@ -24,12 +27,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.Logger.LogInformation("App started...");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-// To Do: Configure at least one specific origin
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+app.Logger.LogWarning("To Do: Configure at least one specific origin");
 
 app.MapControllers();
 

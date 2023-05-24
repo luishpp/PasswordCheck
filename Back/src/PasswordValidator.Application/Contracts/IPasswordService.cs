@@ -2,5 +2,5 @@ namespace PasswordValidator.Application.Contracts;
 
 public interface IPasswordService
 {
-    Task<bool> CheckIfIsValid(string password);
+    Task<bool> IsPasswordValid(string password);
 }

@@ -1,17 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
-namespace PasswordValidator.Domain.Models
+namespace PasswordValidator.Domain.Models;
+
+public class Password
 {
-    public class Password
+    private readonly string _pattern;
+    
+    public Password(string pattern)
     {
-        public string Pattern { get; private set; }
-        
-        public Password(string pattern)
-        {
-            Pattern = pattern;
-        }
+        _pattern = pattern;
+    }
+
+    public async Task<bool> IsValid(string password)
+    {
+        //return await Task.Run(() => _validationStrategy.Validate(password));
+        return await Task.Run(() => Regex.IsMatch(password, _pattern));
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PasswordValidator.Application.Contracts;
+using PasswordValidator.Infrastructure.Factories;
 using PasswordValidator.Tests;
 
 namespace PasswordValidatorTests;
@@ -26,10 +26,10 @@ public class PasswordControllerTests : IClassFixture<BaseTest>
     public async void IsValid_Returns_Expected_Result(string password, bool expected)
     {
         // Arrange
-        var service = _host.Services.GetService<IPasswordService>();
+        var service = _host.Services.GetService<IPasswordServiceFactory>().Create();
 
         // Act
-        var result = service != null ? await service.CheckIfIsValid(password) : false;
+        var result = service != null ? await service.IsPasswordValid(password) : false;
 
         // Assert
         Assert.Equal(expected, result);
