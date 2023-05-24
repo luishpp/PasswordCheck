@@ -1,8 +1,6 @@
-﻿# Password Validator
+# Teste técnico de implementação de lógica
 
-## Teste técnico de implementação de lógica
-
-Considere uma senha sendo válida quando a mesma possuir as seguintes definições:
+## Considere uma senha sendo válida quando a mesma possuir as seguintes definições:
 
 - Nove ou mais caracteres;
 - Ao menos 1 dígito;
