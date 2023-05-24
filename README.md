@@ -81,7 +81,7 @@ Construa uma aplicação que exponha uma api web que valide se uma senha é vál
     - **Princípio da Segregação de Interfaces (ISP):** As interfaces são segregadas para atender apenas aos requisitos específicos das classes que as utilizam. A interface ``IPasswordService`` possui apenas o método necessário para validar senhas, evitando dependências desnecessárias;<br />
     - **Princípio da Inversão de Dependência (DIP):** As dependências são injetadas nas classes por meio de interfaces, permitindo a substituição fácil e a inversão do controle. A classe ``PasswordController`` depende da abstração ``IPasswordServiceFactory``, em vez de depender diretamente da implementação concreta ``PasswordServiceFactory``.<br />
 
-### - Patters
+### - Patterns
 * Que foram abordados:<br />
     - **Dependency Injection (DI):** A interface ``IPasswordService`` é definida como uma dependência da classe ``PasswordController`` e é injetada através do construtor. Isso permite que diferentes implementações do serviço de validação de senha sejam facilmente substituídas sem modificar o código da controller. Além disso, a classe ``PasswordService`` é registrada como uma implementação concreta da interface ``IPasswordService`` no contêiner de DI do ASP.NET Core, que é configurado no arquivo ``Program.cs``;<br />
     - **Factory:** A interface ``IPasswordValidationServiceFactory`` é responsável por criar instâncias do serviço de validação de senha, permitindo que diferentes implementações da interface ``IPasswordService`` sejam criadas com base nos critérios definidos pela factory, permitindo maior flexibilidade e controle na criação de objetos;<br />
