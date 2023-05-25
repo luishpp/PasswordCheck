@@ -1,4 +1,6 @@
-﻿# Password Validator
+﻿# DISCLAIMER
+
+Este projeto tem por objetivo demonstrar habilidades no que se refere à boas práticas de desenvolvimento de software apenas. De forma alguma, trata-se de uma abordagem real ao problema proposto (validação de senha), que é muito simples e poderia ser resolvido apenas com uma controller, principalmente considerando performance da aplicação e custo do desenvolvimento.
 
 ## Teste técnico de implementação de lógica
 
