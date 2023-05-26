@@ -35,9 +35,9 @@ describe('PasswordFormComponent', () => {
       expect(resultElelent.textContent).toContain('Valid password');
     }
 
-    console.log(inputElement.value);
-    console.log(buttonElement);
-    console.log(resultElelent);
+    //console.log(inputElement.value);
+    //console.log(buttonElement);
+    //console.log(resultElelent);
   });
 
   it('should display "Invalid password" when an invalid password is entered', () => {
@@ -54,9 +54,9 @@ describe('PasswordFormComponent', () => {
       expect(resultElelent.textContent).toContain('Invalid password');
     }
 
-    console.log(inputElement.value);
-    console.log(buttonElement);
-    console.log(resultElelent);
+    //console.log(inputElement.value);
+    //console.log(buttonElement);
+    //console.log(resultElelent);
   });
 });
 
