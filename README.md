@@ -1,10 +1,10 @@
 # DISCLAIMER
 
-Este projeto tem por objetivo demonstrar habilidades no que se refere à boas práticas de desenvolvimento de software apenas. De forma alguma, trata-se de uma abordagem real ao problema proposto (validação de senha), que é muito simples e poderia ser resolvido com uma controller, principalmente considerando a performance da aplicação custo operacional e custo do desenvolvimento em si.
+Este projeto tem por objetivo demonstrar habilidades no que se refere à boas práticas de desenvolvimento de software apenas. De forma alguma, trata-se de uma abordagem real ao problema proposto (validação de senha), que é muito simples e poderia ser resolvido com uma controller, principalmente considerando a performance da aplicação, custo operacional e custo do desenvolvimento em si.
 
 **Pontos de atenção:**
 - O desafio requisita o output booleano porém, minha sugestão seria utilizar ``http response codes`` para prover uma resposta mais adequada ao browser;
-- A implementação das classes ``PasswordServiceFactory`` e ``RegexStrategy`` não estão sendo utilizadas pois aqui neste contexto, não se faz necessário o uso de diferentes estratégias de validação de senha;
+- A implementação das classes ``PasswordServiceFactory`` e ``RegexStrategy`` não estão sendo utilizadas pois neste contexto, não se faz necessário o uso de diferentes estratégias de validação de senha;
 - A implementação do Strategy Pattern na classe ``PasswordService`` tem apenas o caráter de demonstração da sua implementação pois o método não acessa qualquer recurso externo que justifique tentativas de acesso. O recurso está dentro do contexto da aplicação.
 
 # Requisitos
