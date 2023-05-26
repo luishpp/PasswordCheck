@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordFormComponent } from './password-form.component';
 
 describe('PasswordFormComponent', () => {
@@ -9,7 +9,7 @@ describe('PasswordFormComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, FormsModule],
+      imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
       declarations: [PasswordFormComponent]
     });
     fixture = TestBed.createComponent(PasswordFormComponent);
@@ -35,9 +35,9 @@ describe('PasswordFormComponent', () => {
       expect(resultElelent.textContent).toContain('Valid password');
     }
 
-    //console.log(inputElement.value);
-    //console.log(buttonElement);
-    //console.log(resultElelent);
+    console.log(inputElement.value);
+    console.log(buttonElement);
+    console.log(resultElelent);
   });
 
   it('should display "Invalid password" when an invalid password is entered', () => {
@@ -54,9 +54,9 @@ describe('PasswordFormComponent', () => {
       expect(resultElelent.textContent).toContain('Invalid password');
     }
 
-    //console.log(inputElement.value);
-    //console.log(buttonElement);
-    //console.log(resultElelent);
+    console.log(inputElement.value);
+    console.log(buttonElement);
+    console.log(resultElelent);
   });
 });
 

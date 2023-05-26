@@ -13,7 +13,7 @@ public class Password
 
     public async Task<bool> IsValid(string password)
     {
-        //return await Task.Run(() => _validationStrategy.Validate(password));
+        //return _validationStrategy.Validate(password);
         return await Task.Run(() => Regex.IsMatch(password, _pattern));
     }
 }

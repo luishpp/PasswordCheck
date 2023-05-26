@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using PasswordValidator.Infrastructure.Factories;
+using PasswordValidator.Application.Contracts;
 
 namespace PasswordValidator.API.Controllers; 
 
@@ -7,30 +7,22 @@ namespace PasswordValidator.API.Controllers;
 [Route("api/v1/[controller]")]
 public class PasswordController : ControllerBase 
 {
-    private readonly IPasswordServiceFactory _serviceFactory;
+    private readonly IPasswordService _service;
     private readonly ILogger<PasswordController> _logger; 
     
-    public PasswordController(IPasswordServiceFactory serviceFactory, ILogger<PasswordController> logger)
+    public PasswordController(IPasswordService service, ILogger<PasswordController> logger)
     {
-        _serviceFactory = serviceFactory;
+        _service = service;
         _logger = logger;
     }
 
-    [HttpGet("{password}")]
-    public async Task<bool> Validate(string password)
+    [HttpPost]
+    public async Task<bool> Validate([FromBody] string password)
     {   
         bool isValid = false;
-        var passwordService = _serviceFactory.Create();  
 
-        try
-        {
-            isValid = await passwordService.IsPasswordValid(password);
-            _logger.LogInformation($"Password is: {isValid}");
-        }
-        catch (System.Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }  
+        isValid = await _service.IsPasswordValid(password);
+        _logger.LogInformation($"Password is: {isValid}");
 
         return isValid;
     }
