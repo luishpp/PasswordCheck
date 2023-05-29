@@ -5,7 +5,7 @@ Este projeto tem por objetivo demonstrar habilidades no que se refere à boas pr
 **Pontos de atenção:**
 - O desafio requisita o output booleano porém, minha sugestão seria utilizar ``http response codes`` para prover uma resposta mais adequada ao browser;
 - A implementação das classes ``PasswordServiceFactory`` e ``RegexStrategy`` não estão sendo utilizadas pois neste contexto, não se faz necessário o uso de diferentes estratégias de validação de senha;
-- A implementação do Strategy Pattern na classe ``PasswordService`` tem apenas o caráter de demonstração da sua implementação pois o método não acessa qualquer recurso externo que justifique tentativas de acesso. O recurso está dentro do contexto da aplicação.
+- A implementação do Retry Pattern na classe ``PasswordService`` tem apenas o caráter de demonstração da sua implementação pois o método não acessa qualquer recurso externo que justifique tentativas de acesso. O recurso está dentro do contexto da aplicação.
 
 # Requisitos
 
